@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger"
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Postagem } from '../../postagem/entities/postagem.entity';
@@ -9,12 +10,15 @@ export class Usuario {
       id: number;
 
     @IsNotEmpty()
-    @Column({length: 255, nullable: false}) 
+    @Column({length: 255, nullable: false})
+    @ApiProperty()  
       nome: string;
 
     @IsEmail()
     @IsNotEmpty()
     @Column({length: 255, nullable: false })
+    // eslint-disable-next-line quotes
+    @ApiProperty({example: "email@email.com.br"}) 
       usuario: string;
 
     @MinLength(8)
