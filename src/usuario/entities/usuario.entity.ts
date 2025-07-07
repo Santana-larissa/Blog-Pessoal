@@ -1,4 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger"
+// eslint-disable-next-line quotes
+import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Postagem } from '../../postagem/entities/postagem.entity';
