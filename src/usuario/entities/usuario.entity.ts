@@ -7,6 +7,7 @@ import { Postagem } from '../../postagem/entities/postagem.entity';
 @Entity({name: 'tb_usuarios'})
 export class Usuario {
 
+    @ApiProperty()
     @PrimaryGeneratedColumn() 
       id: number;
 
@@ -25,12 +26,15 @@ export class Usuario {
     @MinLength(8)
     @IsNotEmpty()
     @Column({length: 255, nullable: false }) 
+    @ApiProperty({ required: false })
       senha: string;
 
-    @Column({length: 5000 }) 
+    @Column({length: 5000 })
+    @ApiProperty({ required: false }) 
       foto: string;
 
     @OneToMany(() => Postagem, (postagem) => postagem.usuario)
+    @ApiProperty({ type: () => [Postagem]})
       postagem: Postagem[];
 
 }
